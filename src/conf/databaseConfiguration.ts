@@ -39,17 +39,17 @@ export default class DatabaseConfiguration {
 
           console.log(options);
         let mongodbConnectionUrl = "mongodb://"+username+":"+password+"@"+host+":"+port+"/"+database;
-        console.log(mongodbConnectionUrl);
+        DatabaseConfiguration.mongoose = mongoose;
              let err = null;
-             DatabaseConfiguration.mongoose = mongoose.connect(mongodbConnectionUrl,options, function(error) {
+             DatabaseConfiguration.mongoose.connect(mongodbConnectionUrl,options, function(error:any) {
                 err=error;
                 LoggerUtility.logger.error(error);
               });
-              mongoose.connection.on('error', function(err:any) {
+              DatabaseConfiguration.mongoose.connection.on('error', function(err:any) {
                 LoggerUtility.logger.error(err);
               });
-              mongoose.connection.on('error',function (err) {  
-                console.log('Mongoose default connection error: ' + err);
+              DatabaseConfiguration.mongoose.connection.on('error',function (err:any) {  
+                LoggerUtility.logger.error('Mongoose default connection error: ' + err);
               }); 
            
     }
