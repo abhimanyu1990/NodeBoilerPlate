@@ -1,9 +1,10 @@
 "use strict";
 import express from "express";
-import  Routes from "./routes/routes";
+import Routes from "./routes/routes";
 import PropertyReaderUtility from "./utilities/propertyReaderUtility";
 import LoggerUtility from "./utilities/loggerUtility";
 import DatabaseConfiguration from "./conf/databaseConfiguration";
+
 import cookieParser from 'cookie-parser';
 import I18n from 'i18n';
 import path from 'path';
@@ -40,12 +41,11 @@ console.log(i18n.getCatalog());
 
 
 
-
 app.listen(8000, () => {
-    
-    logger.info("hello world in logger");
-    logger.error("hello world error");
-    logger.debug("debugger enable");
+    console.log(app);
+   // logger.info("hello world in logger");
+   // logger.error("hello world error");
+  //  logger.debug("debugger enable");
     
 
 });

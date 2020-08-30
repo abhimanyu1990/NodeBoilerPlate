@@ -1,13 +1,15 @@
 
 
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 import LoggerUtility from "../utilities/loggerUtility";
 
 export default class DatabaseConfiguration {
 
-    public static mongoose:any;
+    public static mongoose:Mongoose;
     public app:any;
     constructor(app:any){
+      console.log(typeof mongoose);
+      console.log(mongoose);
         this.app=app;
         this.getMongodbConnection();
     }
