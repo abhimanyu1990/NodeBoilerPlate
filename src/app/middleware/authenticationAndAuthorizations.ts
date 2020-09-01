@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import * as jwt from 'jsonwebtoken';
-import RedisConnect from "../conf/redis.configurations";
-import GlobalObjects from "../app/globalObjects";
+import RedisConnect from "../../conf/redis.configurations";
+import GlobalObjects from "../globalObjects";
 
 export default class AuthMiddleware {
     constructor() { }

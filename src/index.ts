@@ -1,9 +1,9 @@
 "use strict";
 
 import express from "express";
-import Routes from "./routes/routes";
-import PropertyReaderUtility from "./utilities/propertyReader.utility";
-import LoggerUtility from "./utilities/logger.utility";
+import Routes from "./app/routes/routes";
+import PropertyReaderUtility from "./app/utilities/propertyReader.utility";
+import LoggerUtility from "./app/utilities/logger.utility";
 import DatabaseConfiguration from "./conf/database.configuration";
 import Bootstrap from "./bootstrap";
 import bodyParser, * as bodyparser from 'body-parser';

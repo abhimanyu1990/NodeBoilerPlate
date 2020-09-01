@@ -1,7 +1,7 @@
 
 
 import mongoose, { Mongoose } from "mongoose";
-import LoggerUtility from "../utilities/logger.utility";
+import LoggerUtility from "../app/utilities/logger.utility";
 
 export default class DatabaseConfiguration {
 

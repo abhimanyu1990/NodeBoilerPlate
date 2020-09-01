@@ -2,11 +2,12 @@
 
 import express from "express";
 import UserRouter from "./user.routes";
+import BaseRoutes from "./base.routes";
 export default class Routes {
-    public baseAPI="/api/v1";
+    
     constructor(app:express.Router,i18n:any){
-        
-        new UserRouter(app,this.baseAPI);
+        new BaseRoutes();
+        new UserRouter(app);
 
 
 
