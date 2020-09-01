@@ -1,4 +1,3 @@
-
 'use strict';
 
 import winston = require('winston');
@@ -23,7 +22,6 @@ export default class LoggerUtility{
             let infoLogFilePath = logFilePath + "/" + app.get("log.info-filename");
             let debugLogFilePath = logFilePath +"/" + app.get("log.debug-filename");
         if(app.get("log.level.debug")=='true'){
-            console.log("get transport");
             transports.push( new (require('winston-daily-rotate-file'))({
                 name: 'debug-file',
                 filename: debugLogFilePath,

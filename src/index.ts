@@ -1,9 +1,11 @@
 "use strict";
+
 import express from "express";
 import Routes from "./routes/routes";
-import PropertyReaderUtility from "./utilities/propertyReaderUtility";
-import LoggerUtility from "./utilities/loggerUtility";
-import DatabaseConfiguration from "./conf/databaseConfiguration";
+import PropertyReaderUtility from "./utilities/propertyReader.utility";
+import LoggerUtility from "./utilities/logger.utility";
+import DatabaseConfiguration from "./conf/database.configuration";
+import Bootstrap from "./bootstrap";
 
 import cookieParser from 'cookie-parser';
 import I18n from 'i18n';
@@ -36,16 +38,10 @@ let loggerUtility = new LoggerUtility();
 let logger = loggerUtility.getLogger(app);
 new DatabaseConfiguration(app);
 app.use(logger.info);
-console.log( "config =="+DatabaseConfiguration.mongoose);
 console.log(i18n.getCatalog());
 
-
+let bootProgram = new Bootstrap();
 
 app.listen(8000, () => {
-    console.log(app);
-   // logger.info("hello world in logger");
-   // logger.error("hello world error");
-  //  logger.debug("debugger enable");
-    
-
+    console.log("Application is running on port 8000");
 });

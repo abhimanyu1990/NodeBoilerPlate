@@ -1,4 +1,7 @@
+'use strict';
+
 import mongoose, { Schema, Document } from 'mongoose';
+import Role, { IRole } from "./role.model";
 export enum Gender {
   male = 'male',
   female = 'female',
@@ -17,6 +20,7 @@ export interface IUser extends Document {
   lastName: string;
   gender?: Gender;
   address?: Address;
+  role?:IRole;
 }
 
 const UserSchema: Schema = new Schema({
@@ -29,6 +33,17 @@ const UserSchema: Schema = new Schema({
     street: { type: String },
     city: { type: String },
     postCode: { type: String }
+  },
+  role:{
+    roleName: { type: String},
+    roleValue: { type: String},
+    roleDescription: {type:String},
+    permissions:[{
+        permissionName:{ type:String},
+        permissionDescription:{ type:String},
+        permissionValue:{ type:String}
+    }]
+
   }
 });
 

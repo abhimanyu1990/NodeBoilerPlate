@@ -1,0 +1,19 @@
+{
+    "roles": [
+        {
+            "roleValue": "ROLE_ADMIN",
+            "roleName": "Admin",
+            "roleDescription": " This role is for admin"
+        },
+        {
+            "roleValue": "ROLE_USER",
+            "roleName": "User",
+            "roleDescription": " This role is for user"
+        },
+        {
+            "roleValue": "ROLE_ORG_ADMIN",
+            "roleName": "Organization  Admin",
+            "roleDescription": " This role is for admin of an organization"
+        }
+    ]
+}

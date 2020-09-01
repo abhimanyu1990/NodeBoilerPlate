@@ -1,3 +1,4 @@
+'use strict';
 
 import * as express from "express";
 import User, {Address, Gender} from "../models/user.model";
