@@ -14,10 +14,10 @@ const RoleSchema: Schema =  new Schema({
     roleValue: { type: String, required: true, unique: true},
     roleDescription: {type: String, required: true},
     permissions:[{
-        permissionName:{ type:String},
-        permissionDescription:{ type:String},
-        permissionValue:{ type:String}
+            ref: 'Permission',
+            type: mongoose.Schema.Types.ObjectId,
+          
     }]
 });
 
-export default mongoose.model<IRole>('Role', RoleSchema);
+export default mongoose.model<IRole & mongoose.Document>('Role', RoleSchema);

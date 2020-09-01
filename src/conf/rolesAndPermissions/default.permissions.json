@@ -1,55 +1,55 @@
 {
     "permissions": [{
-        "permissionName":"CREATE_USER",
-        "permissionValue":"Create a user" ,
+        "permissionName":"Create a user",
+        "permissionValue":"CREATE_USER" ,
         "permissionDescription":"Permission allow to create a new user ",
         "allowedRoles":["ROLE_ADMIN"]
     },
     {
-        "permissionName":"Update_USER",
-        "permissionValue":"Update a user" ,
+        "permissionName":"Update a user",
+        "permissionValue":"Update_USER" ,
         "permissionDescription":"Permission allow to update a user",
         "allowedRoles":["ROLE_ADMIN"]
     },
     {
-        "permissionName":"DELETE_USER",
-        "permissionValue":"Delete a user" ,
+        "permissionName":"Delete a user",
+        "permissionValue":"DELETE_USER" ,
         "permissionDescription":"Permission allow to delete a user",
         "allowedRoles":["ROLE_ADMIN"]
     },
     {
-        "permissionName":"List_USER",
-        "permissionValue":"List all users" ,
+        "permissionName":"List all users",
+        "permissionValue":"List_USER" ,
         "permissionDescription":"Permission allow to list all users",
         "allowedRoles":["ROLE_ADMIN"]
     },
     {
-        "permissionName":"CREATE_ORG_USER",
-        "permissionValue":"Create a user within the organization" ,
+        "permissionName":"Create a user within the organization",
+        "permissionValue":"CREATE_ORG_USER" ,
         "permissionDescription":"Permission allow to create a new user in the organization ",
         "allowedRoles":["ROLE_ORG_ADMIN"]
     },
     {
-        "permissionName":"Update_ORG_USER",
-        "permissionValue":"Update a user within the organization" ,
+        "permissionName":"Update a user within the organization",
+        "permissionValue":"Update_ORG_USER" ,
         "permissionDescription":"Permission allow to update a user in the organization",
         "allowedRoles":["ROLE_ORG_ADMIN"]
     },
     {
-        "permissionName":"DELETE_ORG_USER",
-        "permissionValue":"Delete a user within the organization" ,
+        "permissionName":"Delete a user within the organization",
+        "permissionValue":"DELETE_ORG_USER" ,
         "permissionDescription":"Permission allow to delete a user within the organization",
         "allowedRoles":["ROLE_ORG_ADMIN"]
     },
     {
-        "permissionName":"List_ORG_USER",
-        "permissionValue":"List all users in a organization" ,
+        "permissionName":"List all users in a organizatio",
+        "permissionValue":"List_ORG_USERn" ,
         "permissionDescription":"Permission allow to list all users within the organization",
         "allowedRoles":["ROLE_ORG_ADMIN"]
     },
     {
-        "permissionName":"UPDATE_PROFILE",
-        "permissionValue":"Update Profile",
+        "permissionName":"Update Profile",
+        "permissionValue":"UPDATE_PROFILE",
         "permissionDescription":"Permission allow to user to update their profile",
         "allowedRoles":["ROLE_USER"]
     }

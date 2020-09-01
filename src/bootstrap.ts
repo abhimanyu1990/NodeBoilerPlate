@@ -5,6 +5,7 @@ import * as rolesData from "./conf/rolesAndPermissions/default.roles.json";
 import Permission, { IPermission } from "./app/models/permission.model";
 import Role, { IRole } from "./app/models/role.model";
 import User, { Address, Gender } from "./app/models/user.model";
+import * as bcrypt from 'bcrypt';
 
 export default class Bootstrap {
 
@@ -20,8 +21,12 @@ export default class Bootstrap {
                         let addr = <Address>{
                             street: "test", city: "new", postCode: "110074"
                         };
-                        User.create({ email: "abhimanyu1990@hotmail.com", firstName: "Abhimanyu", lastName: "Singh", gender: Gender.male, address: addr, role: role }).then((admin) => {
+                        let password = "admin123";
+                        bcrypt.hash(password,10).then((hashPassword) => {
+                            User.create({ email: "abhimanyu1990@hotmail.com", firstName: "Abhimanyu", lastName: "Singh",password:hashPassword, gender: Gender.male, address: addr, role: role._id }).then((admin) => {
+                            });
                         });
+                       
                     }
                 });
             }
@@ -39,11 +44,11 @@ export default class Bootstrap {
                             roleName: role.roleName,
                             roleValue: role.roleValue,
                             roleDescription: role.roleDescription,
-                            permissions: permissionList
-                        };
-
+                            permissions: permissionList.map(({id}) => (id) )
+                        }
                         Role.create(newRole).then((createdRole) => {
                             if(createdRole.roleValue == "ROLE_ADMIN"){
+                                console.log("created role : "+createdRole);
                                 this.createAdmin();
                             }
                         });
@@ -53,9 +58,8 @@ export default class Bootstrap {
         });
     }
 
-    
-    public createPermissions() {
 
+    public createPermissions() {
         let permissions = <any[]>permissionsData.permissions;
         Permission.findOne().then((permissionValue) => {
             if (permissionValue == null) {
@@ -66,6 +70,6 @@ export default class Bootstrap {
                 });
             }
         });
-
     }
+    
 }

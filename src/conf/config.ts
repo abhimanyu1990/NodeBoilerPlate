@@ -6,7 +6,7 @@ export default class Configurations {
         this.env=env;
     }
 
-   function loadDatabase(){
+   public loadDatabase(){
        this.env="development";
        console.log("test");
    }
