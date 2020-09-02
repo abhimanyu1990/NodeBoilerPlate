@@ -8,9 +8,7 @@ import * as bcrypt from 'bcrypt';
 
 
 export default class UserController  {
-    constructor(){
-        
-    }
+    constructor(){}
 
     public async createUser(req:express.Request,res:express.Response){
             let addr = <Address>{
