@@ -1,10 +1,10 @@
-import AuthMiddleware from "../middleware/authenticationAndAuthorizations";
+import AuthMiddleware from "../middleware/auth.middleware";
 
 
 export default class BaseRoutes{
     public baseAPI="/api/v1";
-    public authFunction:AuthMiddleware;
+    public auth:AuthMiddleware;
     constructor(){
-        this.authFunction = new AuthMiddleware();
+        this.auth = new AuthMiddleware();
     }
 }

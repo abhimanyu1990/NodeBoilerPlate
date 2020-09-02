@@ -15,8 +15,7 @@ import * as mongoose from 'mongoose';
 export default class UserController  {
     constructor(){}
 
-    public createUser(){
-        return async (req:express.Request,res:express.Response)=>{
+    public async createUser(req:express.Request,res:express.Response){
             let addr = <Address>{
                 street:"test",city:"new",postCode:"110074"
             };
@@ -24,13 +23,12 @@ export default class UserController  {
             let hashPassword = await bcrypt.hash(password,10);
             let user = User.create({email:"abhimanyu.mailme@gmail.com",firstName:"Abhimanyu",password:hashPassword, lastName:"Singh",gender:Gender.male, address:addr});
             res.send({"message":"user"});
-        } 
+
     }
 
 
 
-    public login(){
-        return async (req:express.Request,res:express.Response) =>{
+    public async login(req:express.Request,res:express.Response){
             console.log(req.body);
             const loginData:LoginDtO = req.body;
             let user = await User.findOne({email:loginData.email}).select({"email":1,"role":1,"password":1,"_id":1})?.populate({path:"role",  select: '-roleName -roleDescription -_id -__v', populate:{path:"permissions", select: '-permissionName -permissionDescription -_id -__v -allowedRoles'}});
@@ -43,7 +41,6 @@ export default class UserController  {
             }else{
                 res.send("wrong credentials");
             }   
-        }
     }
 
     private createToken(user: IUser): AuthTokenDto{
