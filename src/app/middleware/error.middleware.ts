@@ -3,7 +3,6 @@ import { NextFunction, Request, Response } from 'express';
 import GenericHttpException from '../exceptions/http.exception';
 
 function errorMiddleware(error: GenericHttpException, request: Request, response: Response, next: NextFunction) {
-    console.log("error ==========="+error);
     if (error) {
         const status = error.status || 500;
         const message = error.message || 'Something went wrong';
