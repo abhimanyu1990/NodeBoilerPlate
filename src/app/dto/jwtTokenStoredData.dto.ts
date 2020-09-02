@@ -1,3 +1,4 @@
+'use strict';
 import { IsEmail, IsObject, IsNumberString } from "class-validator";
 import * as mongoose from 'mongoose';
 

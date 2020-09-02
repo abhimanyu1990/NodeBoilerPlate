@@ -38,7 +38,7 @@ i18n.configure({
 i18n.setLocale('da');
 app.use(i18n.init);
 
-let routes = new Routes(app,i18n);
+new Routes(app,i18n);
 
 
 let loggerUtility = new LoggerUtility();

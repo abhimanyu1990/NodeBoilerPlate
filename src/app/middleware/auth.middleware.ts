@@ -43,8 +43,9 @@ export default class AuthMiddleware {
             const intersection: string[] = userDetail?.role?.permissions.filter((element: string) => allowedPermissions.includes(element));
             if (intersection.length > 0) {
                 next();
-            }
+            }else{
             next(new GenericForbiddenException("Authroization failed"));
+            }
         } else {
             next();
         }

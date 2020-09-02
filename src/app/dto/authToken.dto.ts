@@ -1,3 +1,5 @@
+'use strict';
+
 import { IsString, IsEmail, IsNumber } from "class-validator";
 
 export default class AuthTokenDto {
