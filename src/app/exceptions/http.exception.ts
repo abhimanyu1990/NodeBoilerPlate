@@ -5,15 +5,14 @@ export default class GenericHttpException extends Error{
      public status: number;
      public name: string;
      public message: any;
-    constructor(message:any, status:number){
-        
+    
+     constructor(message:any, status:number){
         super(message);
         const myObject = {};
         this.message=message;
         this.timestamp = new Date();
         this.errorId = <number> new Date().getTime();
         this.status = status;
-        this.name="Error";
-        
+        this.name="GenericException";   
     }
 }

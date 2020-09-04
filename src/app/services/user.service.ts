@@ -16,10 +16,8 @@ export default class UserService {
 
     async createUser(userData:UserDto,next:NextFunction){
         let ifUserAvailable = await this.ifUserAlreadyExist(userData.email);
-        
         if(!ifUserAvailable){
             let data:any =  await this.addUserRole(userData);
-            console.log("data ==== "+data);
             let user = await User.create(data);
             if(user != null){
                 this.generateRegistrationVerificationToken(user.email);
@@ -31,9 +29,7 @@ export default class UserService {
     }
 
     private async ifUserAlreadyExist(emailStr:string){
-        console.log(emailStr);
         let user  =  await User.findOne({ 'email' : emailStr});
-        console.log("user == "+user);
         return (user != null)?true:false;
     }
 

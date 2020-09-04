@@ -9,7 +9,6 @@ export default class LoginDtO {
     public email: string;
 
     @IsString()
-    
     public password: string;
 
 }

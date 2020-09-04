@@ -29,7 +29,7 @@ export default class AuthService {
     }
    }
 
-
+   
    private createToken(user: IUser): AuthTokenDto {
         const expiresIn = 86400;
         const secret = GlobalObjects.app.get("jwt.secret-token");
@@ -45,8 +45,7 @@ export default class AuthService {
         userDetail.role.permissions = permissionsList;
         userDetail.email = user.email;
         userDetail._id = user._id;
-        let token = jwt.sign(dataStoredInToken, secret, { expiresIn })
-        console.log(userDetail);
+        let token = jwt.sign(dataStoredInToken, secret, { expiresIn });
         RedisConnect.client.SETEX(token, expiry, JSON.stringify(userDetail));
         return {
             expiry,

@@ -4,7 +4,6 @@
 import { plainToClass } from 'class-transformer';
 import { validate, ValidationError } from 'class-validator';
 import { RequestHandler } from 'express';
-import GenericHttpException from '../exceptions/http.exception';
 import {GenericBadRequestException} from '../exceptions/generic.exception';
 
 function validationMiddleware<T>(type: any, skipMissingProperties = false): RequestHandler {

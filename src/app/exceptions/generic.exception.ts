@@ -11,7 +11,6 @@ export  class GenericNotFoundException extends GenericHttpException {
 
 
 export  class GenericAuthenticationException extends GenericHttpException{
-    
     constructor(message:any){
         super(message,401);  
         this.message=message; 

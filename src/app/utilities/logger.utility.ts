@@ -5,11 +5,9 @@ import { appendFile } from 'fs';
 
 export default class LoggerUtility{
     public static logger:any;
-    
 
-    constructor() {
+    constructor() {}
 
-    }
     public getLogger(app:any){
         this.configureInfoLogger(app);
         return LoggerUtility.logger;
@@ -47,9 +45,6 @@ export default class LoggerUtility{
                 timestamp: function() { return new Date().toString(); }
             }));
         }
-
-        
-        
         if(app.get("log.level.info")=='true'){
             transports.push( new (require('winston-daily-rotate-file'))({
                 name: 'info-file',
@@ -66,6 +61,7 @@ export default class LoggerUtility{
         return transports;
 
     }
+
     private configureInfoLogger(app:any) {
         if (LoggerUtility.logger == null) {
             let transports = this.createTransports(app);

@@ -3,13 +3,9 @@ import LoginDtO from "../dto/login.dto";
 import {Request , Response, NextFunction} from 'express';
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
-import UserDto from "../dto/user.dto";
-import {IUser} from "../models/user.model";
-
 
 export default class AuthController {
     constructor() {}
-
 
     public async login(req: Request, res: Response,next:NextFunction) {
         let authService = new AuthService();
@@ -17,7 +13,6 @@ export default class AuthController {
         let authObj:any = await authService.findUserAndVerifyPassword(loginData,next);
         res.send(authObj);
     }
-
 
     public async register(req: Request, res: Response,next:NextFunction){
         let userService = new UserService();

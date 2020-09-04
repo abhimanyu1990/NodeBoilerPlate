@@ -29,7 +29,6 @@ const UserSchema: Schema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   password: { type: String, required: true},
-  // Gets the Mongoose enum from the TypeScript enum
   gender: { type: String, enum: Object.values(Gender) },
   address: {
     street: { type: String },
@@ -42,5 +41,4 @@ const UserSchema: Schema = new Schema({
   }
 });
 
-// Export the model and return your IUser interface
 export default mongoose.model<IUser & mongoose.Document>('User', UserSchema);
