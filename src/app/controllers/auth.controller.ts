@@ -2,6 +2,9 @@
 import LoginDtO from "../dto/login.dto";
 import {Request , Response, NextFunction} from 'express';
 import AuthService from "../services/auth.service";
+import UserService from "../services/user.service";
+import UserDto from "../dto/user.dto";
+import {IUser} from "../models/user.model";
 
 
 export default class AuthController {
@@ -17,7 +20,10 @@ export default class AuthController {
 
 
     public async register(req: Request, res: Response,next:NextFunction){
-        let authService = new AuthService();
+        let userService = new UserService();
+        const userData : any = req.body;
+        let data:any = await userService.createUser(userData,next);
+        res.send(data).end();
         //TODO
     }
 
