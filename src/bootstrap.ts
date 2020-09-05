@@ -23,7 +23,7 @@ export default class Bootstrap {
                         };
                         let password = "admin123";
                         bcrypt.hash(password,10).then((hashPassword) => {
-                            User.create({ email: "abhimanyu1990@hotmail.com", firstName: "Abhimanyu", lastName: "Singh",password:hashPassword, gender: Gender.male, address: addr, role: role._id }).then((admin) => {
+                            User.create({ email: "example@hotmail.com", firstName: "Abhimanyu", lastName: "Singh",password:hashPassword, gender: Gender.male, address: addr, role: role._id }).then((admin) => {
                             });
                         });
                        
@@ -48,7 +48,6 @@ export default class Bootstrap {
                         }
                         Role.create(newRole).then((createdRole) => {
                             if(createdRole.roleValue == "ROLE_ADMIN"){
-                                console.log("created role : "+createdRole);
                                 this.createAdmin();
                             }
                         });

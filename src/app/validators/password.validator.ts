@@ -2,12 +2,7 @@ import { registerDecorator, ValidationOptions, ValidationArguments, IsBoolean } 
 
 export function IsMatchedRegex(property: string, validationOptions?: ValidationOptions) {
   return function (object: Object, propertyName: string) {
-    console.log(object);
-    console.log(propertyName);
-    console.log(validationOptions);
-    console.log(property);
     let strongRegex = new RegExp(property);
-
     registerDecorator({
       name: 'IsMatchedRegex',
       target: object.constructor,

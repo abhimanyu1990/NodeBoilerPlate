@@ -8,6 +8,5 @@ export default class Configurations {
 
    public loadDatabase(){
        this.env="development";
-       console.log("test");
    }
 }

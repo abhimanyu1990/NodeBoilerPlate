@@ -36,7 +36,6 @@ export default class DatabaseConfiguration {
       family: family // Use IPv4, skip trying IPv6
     };
 
-    console.log(options);
     let mongodbConnectionUrl = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + database;
 
     let err = null;
