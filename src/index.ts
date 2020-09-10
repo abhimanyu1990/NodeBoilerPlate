@@ -14,7 +14,7 @@ import path from 'path';
 import GlobalObjects from "./app/globalObjects";
 import RedisConnect from "./conf/redis.configurations";
 import * as SwaggerUI from 'swagger-ui-express';
-import { swaggerDocument } from "../swagger/swagger";
+import { swaggerDocument } from "./swagger";
 const app = express();
 app.use(function(req, res, next) {
     console.log("cors actions");
