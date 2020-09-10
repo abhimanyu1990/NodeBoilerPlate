@@ -13,12 +13,20 @@ import I18n from 'i18n';
 import path from 'path';
 import GlobalObjects from "./app/globalObjects";
 import RedisConnect from "./conf/redis.configurations";
-
-
+import * as SwaggerUI from 'swagger-ui-express';
+import { swaggerDocument } from "../swagger/swagger";
 const app = express();
+app.use(function(req, res, next) {
+    console.log("cors actions");
+    res.header("Access-Control-Allow-Origin", "*"); //specify specific origin to avoid attack
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+
+app.use("/api-docs", SwaggerUI.serve, SwaggerUI.setup(swaggerDocument));
 
 new PropertyReaderUtility(app);
 GlobalObjects.app = app;
