@@ -1,4 +1,4 @@
-# NodeBoilerPlate
+# NodeJs-TypeScript Starter Project
 
 This project could be a good base project for developing Express/Node.js and MongoDB application using TypeScript on top of it. This project have following functional implementation
 
