@@ -39,7 +39,7 @@ export default class UserService {
         this.sendUserVerificationEmail(tokenObj.email,tokenObj.token);
     }
 
-
+    // need to modify this function. Need to implement application.messages file which will contain all types of message 
     private async sendUserVerificationEmail(email:string, registrationToken:string){
             let emailService = new EmailService();
             let subject = "Welcome";

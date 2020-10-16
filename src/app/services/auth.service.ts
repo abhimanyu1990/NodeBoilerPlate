@@ -13,6 +13,7 @@ import LoginDtO from "../dto/login.dto";
 export default class AuthService {
     constructor(){}
 
+   // check whether user credentials are valid or not. If Valid then it generate JWT token
    public async findUserAndVerifyPassword( loginData: LoginDtO, next:NextFunction){
        
     let user = await User.findOne({ email: loginData.email }).select({ "email": 1, "role": 1, "password": 1, "_id": 1 })?.populate({ path: "role", select: '-roleName -roleDescription -_id -__v', populate: { path: "permissions", select: '-permissionName -permissionDescription -_id -__v -allowedRoles' } });
@@ -29,7 +30,7 @@ export default class AuthService {
     }
    }
 
-   
+   // this function generate JWT token and save it in Redis 
    private createToken(user: IUser): AuthTokenDto {
         const expiresIn = 86400;
         const secret = GlobalObjects.app.get("jwt.secret-token");

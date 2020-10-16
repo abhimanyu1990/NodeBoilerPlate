@@ -11,7 +11,7 @@ export function IsMatchedRegex(property: string, validationOptions?: ValidationO
       options: validationOptions,
       validator: {
         validate(value: any, args: ValidationArguments) {
-          return typeof value === 'string' && strongRegex.test(value); // you can return a Promise<boolean> here as well, if you want to make async validation
+          return typeof value === 'string' && strongRegex.test(value);
         },
       },
     });
