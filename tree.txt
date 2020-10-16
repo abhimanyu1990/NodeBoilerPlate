@@ -1,0 +1,59 @@
+
+├── nodemon.json
+├── LICENSE
+├── tsconfig.json
+├── README.md
+├── package.json
+├── package-lock.json
+├── log                                                 // logs will be generated in this folder.
+└── src
+    ├── conf                                    // this directory contains all the configuration related functions
+    │   ├── rolesAndPermissions                 // this directory contains the default roles and permission that needs to persisted while starting the application for the first time
+    │   │   ├── default.roles.json
+    │   │   └── default.permissions.json
+    │   ├── redis.configurations.ts             // functionality to create redis connection
+    │   ├── config.ts
+    │   └── database.configuration.ts           // functionality to create MongoDB connection
+    ├── app
+    │   ├── globalObjects.ts                   //  this class have static instance of type express application. It is used to access the express application properties any where in the application
+    │   ├── exceptions                         //  In this directory, custom http exceptions are defined like GenericNotFoundExcpetion, GenericBadRequestException
+    │   │   ├── generic.exception.ts
+    │   │   └── http.exception.ts
+    │   ├── controllers                        // In this directory different controllers are defined. Controllers primary purpose is to parse the request and response and Invoke services for desire computation
+    │   │   ├── user.controller.ts
+    │   │   └── auth.controller.ts
+    │   ├── routes                             // In this directory all the routes are defined. It is suggested to define separate route file for each controllers for better readability
+    │   │   ├── base.routes.ts
+    │   │   ├── user.routes.ts
+    │   │   ├── auth.routes.ts
+    │   │   └── routes.ts
+    │   ├── middleware                         // different middleware functionalities are defined within this directory.
+    │   │   ├── auth.middleware.ts             // verify whether a user is authenticated or not as well as user have the required permissions
+    │   │   ├── error.middleware.ts            // error middleware is use to catch all the errors at application level
+    │   │   └── validation.middleware.ts       // validation middleware will authenticate request body as per the defined dto passed to validation middleware for that particular reuqest
+    │   ├── dto                                // all the DTOs ( data transfer objects) has been defined in this directrory. It is good practice to define DTO for each request body.
+    │   │   │                                  //Each dto filed have required contrain definition which is validated at the time of API call. 
+    │   │   ├── jwtTokenStoredData.dto.ts
+    │   │   ├── authToken.dto.ts
+    │   │   ├── user.dto.ts
+    │   │   └── login.dto.ts
+    │   ├── validators                         // this directory will contain all the custom field validator
+    │   │   └── password.validator.ts          // password validator to validate whether password meet the requirement or not
+    │   ├── services                           // services directory will contain all the business logic
+    │   │   ├── email.service.ts
+    │   │   ├── auth.service.ts
+    │   │   └── user.service.ts
+    │   ├── models                             // this directory will contain all the mongoose models
+    │   │   ├── permission.model.ts
+    │   │   ├── role.model.ts
+    │   │   ├── registrationToken.model.ts
+    │   │   └── user.model.ts
+    │   └── utilities                          // utilities contain all the application utility  or define application logger
+    │       ├── propertyReader.utility.ts      // read application.properties and add the properties to express application
+    │       └── logger.utility.ts              // winston logger definition for different log level
+    ├── bootstrap.ts                           // bootsrap have all the necessary functionalities that need to be call when application is deployed for the first time
+    ├── swagger                                // This directory contain the API documentation details. It is good practice to create separate api definition file for each controller
+    │   ├── index.ts                          
+    │   └── swagger.auth.ts
+    ├── application.properties                 // This file has all the application level properties are defined
+    └── index.ts                               // this file is the main file which start the server and enables all the application level configurations

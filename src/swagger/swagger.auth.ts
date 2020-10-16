@@ -12,7 +12,7 @@ export const login = {
 
     requestBody:
     {
-        "name": "loginDTO",
+        "name": "LoginDTO",
         "description": "Id of the iser",
         content: {
             "application/json": {
@@ -35,8 +35,6 @@ export const login = {
                 }
             }
         }
-
-
     }
     ,
     responses: {

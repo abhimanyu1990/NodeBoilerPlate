@@ -9,60 +9,47 @@ import errorMiddleware from "./app/middleware/error.middleware";
 import Bootstrap from "./bootstrap";
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import I18n from 'i18n';
-import path from 'path';
 import GlobalObjects from "./app/globalObjects";
 import RedisConnect from "./conf/redis.configurations";
 import * as SwaggerUI from 'swagger-ui-express';
 import { swaggerDocument } from "./swagger";
+
+// creating express application
 const app = express();
-app.use(function(req, res, next) {
-    console.log("cors actions");
-    res.header("Access-Control-Allow-Origin", "*"); //specify specific origin to avoid attack
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+
+// added cookieParser() as middleware
 app.use(cookieParser());
+// added bodyParser as middleware to parse request body as JSON object
 app.use(bodyParser.json());
-
-
+// swagger documentation will be access at http://<ip:port>/api-docs
 app.use("/api-docs", SwaggerUI.serve, SwaggerUI.setup(swaggerDocument));
 
+// Read properties from the `application.properties` file and added the properties (key-value) in express application
 new PropertyReaderUtility(app);
+// GlobalObjects is the class have static app instance so that we can refer to app anywhere in application
 GlobalObjects.app = app;
 
+//Initializing the routes defined in the application
+new Routes(app);
 
-const i18n = I18n;
-i18n.configure({
-    locales: ['da','en'],
-    defaultLocale: 'en',
-    directory: path.join(__dirname, 'locales'),
-    register: global,
-    api: {
-        __: 't', // now req.__ becomes req.t
-        __n: 'tn' // and req.__n can be called as req.tn
-      }
-  });
-i18n.setLocale('da');
-app.use(i18n.init);
-
-new Routes(app,i18n);
-
-
+// configuring log level info as middleware to log all the requests
 let loggerUtility = new LoggerUtility();
 let logger = loggerUtility.getLogger(app);
 app.use(logger.info);
 
+// MongoDB database connection initialization
 new DatabaseConfiguration(app);
 
-
-let bootProgram = new Bootstrap();
+// Redis database initialization
 new RedisConnect();
 
-//need to add middleware once routes are initialized
+// Bootstrap program invocation to create all the necessay roles, permission and admin at application startup
+let bootProgram = new Bootstrap();
+
+
+//added errorMiddleware to catch all the error at application level
 app.use(errorMiddleware);
 
 app.listen(8000, () => {
     console.log("Application is running on port 8000");
-    //console.log(GlobalObjects.app);
 });
